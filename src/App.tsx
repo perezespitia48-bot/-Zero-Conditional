@@ -26,7 +26,8 @@ import { SortingGame } from './components/SortingGame';
 import { SentenceBuilder } from './components/SentenceBuilder';
 import { AnswerKeyView } from './components/AnswerKeyView';
 import { TutorId, TutorMood } from './types/grammar';
-import { soundManager } from './utils/audio';
+import { soundManager, MusicTrack } from './utils/audio';
+import { Music } from 'lucide-react';
 
 type ActiveView = 'scene' | 'quiz' | 'sorting' | 'builder' | 'answers';
 
@@ -36,6 +37,7 @@ export default function App() {
   const [tutorMood, setTutorMood] = useState<TutorMood>('explaining');
   const [customTutorFeedback, setCustomTutorFeedback] = useState<string>('');
   const [soundEnabled, setSoundEnabled] = useState(true);
+  const [musicTrack, setMusicTrack] = useState<MusicTrack>('off');
 
   // Overall player stats
   const [totalAttempts, setTotalAttempts] = useState(0);
@@ -45,7 +47,26 @@ export default function App() {
     const newState = !soundEnabled;
     setSoundEnabled(newState);
     soundManager.setSoundEnabled(newState);
-    if (newState) soundManager.playSuccess();
+    if (!newState) {
+      setMusicTrack('off');
+    } else {
+      soundManager.playSuccess();
+    }
+  };
+
+  const handleToggleGlobalMusic = () => {
+    if (!soundEnabled) {
+      setSoundEnabled(true);
+      soundManager.setSoundEnabled(true);
+    }
+    const nextTrack: MusicTrack =
+      musicTrack === 'off' ? 'lofi' : musicTrack === 'lofi' ? 'focus' : musicTrack === 'focus' ? 'ambient' : 'off';
+    setMusicTrack(nextTrack);
+    if (nextTrack === 'off') {
+      soundManager.stopMusic();
+    } else {
+      soundManager.startMusic(nextTrack);
+    }
   };
 
   const handleQuizAnswer = (isCorrect: boolean) => {
@@ -147,8 +168,26 @@ export default function App() {
           {/* Zone 3: 1 primary action */}
           <div className="flex items-center gap-2.5 shrink-0">
             <button
+              onClick={handleToggleGlobalMusic}
+              title={`Música de estudio: ${
+                musicTrack === 'off' ? 'Activar música (Lofi/Focus/Zen)' : `Reproduciendo: ${musicTrack}`
+              }`}
+              className={`px-2.5 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer shadow-md flex items-center gap-1.5 border ${
+                musicTrack !== 'off'
+                  ? 'bg-gradient-to-r from-pink-600 to-rose-600 text-white border-pink-400 shadow-pink-500/30 ring-2 ring-pink-500/40 animate-pulse'
+                  : 'text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border-slate-700'
+              }`}
+              aria-label="Toggle study background music"
+            >
+              <Music className="w-3.5 h-3.5 text-pink-300" />
+              <span className="hidden sm:inline">
+                {musicTrack === 'off' ? 'Música' : musicTrack.toUpperCase()}
+              </span>
+            </button>
+
+            <button
               onClick={toggleSound}
-              title={soundEnabled ? 'Mute audio' : 'Enable audio sound effects'}
+              title={soundEnabled ? 'Silenciar efectos y tonos' : 'Activar efectos y tonos'}
               className="p-2.5 rounded-xl text-slate-300 hover:text-white bg-slate-900 hover:bg-slate-800 border border-slate-700 transition-colors cursor-pointer shadow-md"
               aria-label="Toggle audio"
             >

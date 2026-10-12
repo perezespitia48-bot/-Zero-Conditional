@@ -61,6 +61,7 @@ export const SortingGame: React.FC<SortingGameProps> = ({
       setCurrentIndex((i) => i + 1);
     } else {
       setCompleted(true);
+      soundManager.playCompletionFanfare();
     }
   };
 

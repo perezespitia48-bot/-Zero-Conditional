@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { CheckCircle2, XCircle, Volume2, ArrowRight, HelpCircle, Flame } from 'lucide-react';
+import {
+  CheckCircle2,
+  XCircle,
+  Volume2,
+  VolumeX,
+  Music,
+  ArrowRight,
+  HelpCircle,
+  Flame,
+  Radio,
+} from 'lucide-react';
 import { SentenceItem, ConditionalType } from '../types/grammar';
-import { soundManager } from '../utils/audio';
+import { soundManager, MusicTrack } from '../utils/audio';
 
 interface QuizGameProps {
   sentences: SentenceItem[];
@@ -22,6 +32,31 @@ export const QuizGame: React.FC<QuizGameProps> = ({
   const [score, setScore] = useState(0);
   const [streak, setStreak] = useState(0);
   const [showHint, setShowHint] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState<MusicTrack>(() => soundManager.getCurrentTrack());
+  const [isSoundOn, setIsSoundOn] = useState(() => soundManager.isSoundEnabled());
+
+  useEffect(() => {
+    // Sync current state
+    setCurrentTrack(soundManager.getCurrentTrack());
+    setIsSoundOn(soundManager.isSoundEnabled());
+  }, []);
+
+  const handleToggleTrack = (track: MusicTrack) => {
+    if (currentTrack === track) {
+      soundManager.stopMusic();
+      setCurrentTrack('off');
+    } else {
+      soundManager.startMusic(track);
+      setCurrentTrack(track);
+    }
+  };
+
+  const handleToggleSound = () => {
+    const newState = !isSoundOn;
+    setIsSoundOn(newState);
+    soundManager.setSoundEnabled(newState);
+    if (newState) soundManager.playSuccess();
+  };
 
   const filteredSentences = sentences.filter((s) => {
     if (filterType === 'all') return true;
@@ -37,9 +72,16 @@ export const QuizGame: React.FC<QuizGameProps> = ({
 
     const isCorrect = idx === currentSentence.correctOptionIndex;
     if (isCorrect) {
-      soundManager.playSuccess();
+      const newStreak = streak + 1;
+      setStreak(newStreak);
       setScore((prev) => prev + 1);
-      setStreak((prev) => prev + 1);
+
+      if (newStreak >= 3 && newStreak % 3 === 0) {
+        soundManager.playStreakFanfare();
+      } else {
+        soundManager.playSuccess();
+      }
+
       if (onSetTutorFeedback) {
         onSetTutorFeedback(
           `Teacher Ana Espitia cheers: "Superb! ${currentSentence.microFeedbackEn}"`
@@ -131,8 +173,8 @@ export const QuizGame: React.FC<QuizGameProps> = ({
           </button>
         </div>
 
-        {/* Stats counter */}
-        <div className="flex items-center gap-4 text-xs font-bold text-slate-300">
+        {/* Stats counter & Audio / Music Control Toolbar */}
+        <div className="flex flex-wrap items-center gap-3 text-xs font-bold text-slate-300">
           <span className="flex items-center gap-1.5">
             <span className="text-slate-500">Progress:</span>
             <span className="font-extrabold text-white tabular-nums">
@@ -149,6 +191,65 @@ export const QuizGame: React.FC<QuizGameProps> = ({
               <span>Streak: {streak}</span>
             </span>
           )}
+
+          {/* Dedicated Quiz BGM / Tone Selector */}
+          <div className="flex items-center gap-1 bg-[#090E1F] p-1 rounded-xl border border-violet-900/60 ml-auto">
+            <span className="text-[11px] font-bold text-violet-400 px-1.5 flex items-center gap-1">
+              <Music className="w-3.5 h-3.5 text-pink-400" />
+              <span className="hidden sm:inline">Música / Tonos:</span>
+            </span>
+            <button
+              onClick={() => handleToggleTrack('lofi')}
+              className={`px-2 py-1 rounded-lg text-[11px] font-black cursor-pointer transition-all ${
+                currentTrack === 'lofi'
+                  ? 'bg-gradient-to-r from-pink-500 to-rose-600 text-white shadow-md'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              }`}
+              title="Música Lofi Study Beat (Web Audio sin dependencias)"
+            >
+              🎵 Lofi
+            </button>
+            <button
+              onClick={() => handleToggleTrack('focus')}
+              className={`px-2 py-1 rounded-lg text-[11px] font-black cursor-pointer transition-all ${
+                currentTrack === 'focus'
+                  ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-md'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              }`}
+              title="Tonos Focus Melodic Arpeggio"
+            >
+              ⚡ Focus
+            </button>
+            <button
+              onClick={() => handleToggleTrack('ambient')}
+              className={`px-2 py-1 rounded-lg text-[11px] font-black cursor-pointer transition-all ${
+                currentTrack === 'ambient'
+                  ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-md'
+                  : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+              }`}
+              title="Tonos Ambient Pad"
+            >
+              🌊 Zen
+            </button>
+            {currentTrack !== 'off' && (
+              <button
+                onClick={() => handleToggleTrack('off')}
+                className="px-2 py-1 rounded-lg text-[11px] font-bold text-rose-300 hover:bg-rose-950/60 cursor-pointer"
+                title="Detener música"
+              >
+                Pausar
+              </button>
+            )}
+            <button
+              onClick={handleToggleSound}
+              className={`p-1.5 rounded-lg text-slate-300 hover:text-white cursor-pointer ${
+                isSoundOn ? 'text-violet-400 hover:bg-violet-950/50' : 'text-slate-600 hover:bg-slate-800'
+              }`}
+              title={isSoundOn ? 'Silenciar efectos y tonos' : 'Activar efectos y tonos'}
+            >
+              {isSoundOn ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
+            </button>
+          </div>
         </div>
       </div>
 
