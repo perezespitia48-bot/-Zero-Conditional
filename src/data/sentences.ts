@@ -6,7 +6,7 @@ export const TUTORS: Record<string, TutorCharacter> = {
     name: 'Teacher Ana Espitia',
     role: 'Lead English Instructor',
     specialty: 'Expert in Zero & First Conditionals in Real Classroom Life',
-    avatarUrl: '/src/assets/images/teacher_ana_espitia_avatar_1791764791395.jpg',
+    avatarUrl: '',
     themeColor: {
       bg: 'bg-indigo-50',
       border: 'border-indigo-200',
@@ -19,7 +19,7 @@ export const TUTORS: Record<string, TutorCharacter> = {
     name: 'Student Marco',
     role: 'Study Buddy & Co-Learner',
     specialty: 'Classroom Practice & Study Strategies',
-    avatarUrl: '/src/assets/images/student_marco_avatar_1791764800725.jpg',
+    avatarUrl: '',
     themeColor: {
       bg: 'bg-emerald-50',
       border: 'border-emerald-200',
@@ -29,7 +29,7 @@ export const TUTORS: Record<string, TutorCharacter> = {
   },
 };
 
-export const CLASSROOM_IMAGE_URL = '/src/assets/images/interactive_classroom_hub_1791764809960.jpg';
+export const CLASSROOM_IMAGE_URL = '';
 
 export const ZERO_CONDITIONAL_SENTENCES: SentenceItem[] = [
   {

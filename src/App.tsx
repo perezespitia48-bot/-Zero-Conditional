@@ -236,7 +236,7 @@ export default function App() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="mt-3 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-medium"
             >
-              Join Teacher Ana Espitia in 20 authentic university and adult educational scenarios. Discover the crucial difference between permanent classroom rules and probable future consequences with interactive images, live voice audio, and bite-sized feedback.
+              Join Teacher Ana Espitia in 20 authentic university and adult educational scenarios. Discover the crucial difference between permanent classroom rules and probable future consequences with interactive text exercises, live audio, and instant feedback.
             </motion.p>
 
             {/* Quick Interactive Mode Switcher with Ultra-Vibrant Colorful Buttons */}

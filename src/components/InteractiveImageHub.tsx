@@ -188,7 +188,7 @@ export const InteractiveImageHub: React.FC<InteractiveImageHubProps> = ({
           <div className="flex items-center gap-2.5">
             <span className="w-3.5 h-3.5 rounded-full bg-gradient-to-r from-fuchsia-500 via-pink-500 to-violet-500 animate-pulse shadow-lg shadow-fuchsia-500/50" />
             <h3 className="font-black text-white text-xl sm:text-3xl font-display tracking-tight">
-              Visual Grammar Studio: Illustrated Scenarios & Structure
+              Grammar Studio: Interactive Scenarios & Clause Anatomy
             </h3>
           </div>
           <p className="text-xs sm:text-base text-slate-300 mt-1.5 font-medium">
@@ -315,30 +315,30 @@ export const InteractiveImageHub: React.FC<InteractiveImageHubProps> = ({
                     : `${scen.themeColor.border} bg-[#070A12] hover:shadow-2xl`
                 }`}
               >
-                {/* Visual Representative Image with Colored Scrim */}
-                <div className="relative w-full aspect-[4/3] overflow-hidden bg-black">
-                  <img
-                    src={scen.imageUrl}
-                    alt={scen.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
-                    referrerPolicy="no-referrer"
-                  />
-                  {/* Top Badge */}
-                  <div className="absolute top-2.5 left-2.5">
+                {/* Interactive Structured Text Header Banner (No image) */}
+                <div className={`p-4 bg-gradient-to-b ${scen.themeColor.cardBg} border-b border-slate-800/80 flex flex-col justify-between gap-3`}>
+                  <div className="flex items-center justify-between">
                     <span
                       className={`px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-wider text-white shadow-lg border border-white/20 ${scen.themeColor.badgeBg}`}
                     >
                       {scen.type === 'first' ? '1st Conditional' : 'Zero Conditional'}
                     </span>
+                    {isSelected && (
+                      <span className="bg-emerald-400 text-slate-950 px-2 py-0.5 rounded-lg text-[10px] font-black shadow-md flex items-center gap-1">
+                        <span>✓</span>
+                        <span>ACTIVE</span>
+                      </span>
+                    )}
                   </div>
 
-                  {/* Highlight pill indicator */}
-                  {isSelected && (
-                    <div className="absolute top-2.5 right-2.5 bg-white text-slate-950 px-2 py-0.5 rounded-lg text-[10px] font-black shadow-md flex items-center gap-1">
-                      <span>✓</span>
-                      <span>ACTIVE</span>
-                    </div>
-                  )}
+                  <div className="p-3 rounded-2xl bg-black/60 border border-slate-800">
+                    <span className="text-[10px] uppercase font-mono text-slate-400 block font-bold mb-1">
+                      Formula Pattern:
+                    </span>
+                    <span className="text-xs font-mono font-bold text-amber-300">
+                      {scen.formula}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Card Title & Snippet with Deep Dark Background */}
@@ -347,7 +347,7 @@ export const InteractiveImageHub: React.FC<InteractiveImageHubProps> = ({
                     <h5 className="font-black text-white text-sm sm:text-base leading-snug group-hover:text-indigo-300 transition-colors">
                       {scen.title}
                     </h5>
-                    <p className="text-xs text-slate-300 mt-1 font-medium line-clamp-2">
+                    <p className="text-xs text-slate-300 mt-2 font-medium line-clamp-2 italic">
                       "{scen.ifClause}..."
                     </p>
                   </div>
@@ -378,22 +378,37 @@ export const InteractiveImageHub: React.FC<InteractiveImageHubProps> = ({
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-cyan-500/20 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
-          {/* Representative Image Spotlight */}
+          {/* Representative Interactive Text Card Spotlight (No image) */}
           <div className="lg:col-span-5">
-            <div className={`relative rounded-3xl overflow-hidden border-2 ${selectedScenario.themeColor.border} shadow-2xl group`}>
-              <img
-                src={selectedScenario.imageUrl}
-                alt={selectedScenario.title}
-                className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 p-3 rounded-2xl bg-black/90 backdrop-blur-md border border-slate-700 text-xs flex items-center justify-between shadow-xl">
-                <span className="font-black text-amber-300">
+            <div className={`p-6 rounded-3xl border-2 ${selectedScenario.themeColor.border} bg-[#060A14] shadow-2xl space-y-4`}>
+              <div className="flex items-center justify-between">
+                <span className="font-black text-xs text-amber-300 bg-amber-950/60 border border-amber-500/40 px-3 py-1 rounded-xl">
                   {selectedScenario.categoryBadge}
+                </span>
+                <span className={`px-2.5 py-0.5 rounded-lg text-[10px] font-black uppercase text-white ${selectedScenario.themeColor.badgeBg}`}>
+                  {selectedScenario.type === 'first' ? 'Predictive' : 'Routine Rule'}
+                </span>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-black/80 border border-slate-800">
+                <span className="text-[11px] font-mono text-slate-400 block mb-1 uppercase tracking-wider">
+                  Target Rule Blueprint
+                </span>
+                <p className="text-sm font-mono font-black text-amber-300">
+                  {selectedScenario.formula}
+                </p>
+                <p className="text-xs text-slate-300 mt-2 font-medium leading-relaxed">
+                  {selectedScenario.whyThisStructure}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between pt-2 border-t border-slate-800">
+                <span className="text-xs font-semibold text-slate-400">
+                  Pronunciation & Intonation
                 </span>
                 <button
                   onClick={() => handleSpeak(selectedScenario.fullSentence)}
-                  className="px-3.5 py-1.5 rounded-xl text-xs font-black bg-white text-slate-950 hover:bg-slate-200 transition-colors flex items-center gap-1.5 shadow-md cursor-pointer"
+                  className="px-3.5 py-2 rounded-xl text-xs font-black bg-white text-slate-950 hover:bg-slate-200 transition-colors flex items-center gap-1.5 shadow-md cursor-pointer"
                 >
                   <Volume2 className="w-4 h-4 text-indigo-700" />
                   <span>Listen Voice</span>

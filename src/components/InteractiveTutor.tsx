@@ -147,18 +147,21 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
             <motion.div
               animate={isWaving ? { rotate: [0, -10, 10, -5, 5, 0], scale: [1, 1.08, 1] } : {}}
               transition={{ duration: 0.6 }}
-              className={`relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden border-2 shadow-2xl transition-all ${
+              className={`relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden border-2 shadow-2xl transition-all flex flex-col items-center justify-center p-3 select-none ${
                 activeTutor === 'ana'
-                  ? 'border-violet-500/80 ring-4 ring-violet-500/20'
-                  : 'border-emerald-500/80 ring-4 ring-emerald-500/20'
+                  ? 'border-violet-500/80 ring-4 ring-violet-500/20 bg-gradient-to-br from-violet-900/90 via-purple-950/80 to-slate-950 text-white'
+                  : 'border-emerald-500/80 ring-4 ring-emerald-500/20 bg-gradient-to-br from-emerald-900/90 via-teal-950/80 to-slate-950 text-white'
               }`}
             >
-              <img
-                src={tutor.avatarUrl}
-                alt={tutor.name}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-108"
-                referrerPolicy="no-referrer"
-              />
+              <span className="text-4xl mb-1">
+                {activeTutor === 'ana' ? '👩‍🏫' : '🎒'}
+              </span>
+              <span className="text-[11px] font-black uppercase tracking-wider text-center line-clamp-1">
+                {activeTutor === 'ana' ? 'Teacher Ana' : 'Student Marco'}
+              </span>
+              <span className="text-[9px] font-mono opacity-70">
+                {activeTutor === 'ana' ? 'Instructor' : 'Study Buddy'}
+              </span>
             </motion.div>
 
             {/* Interactive reaction badge */}
