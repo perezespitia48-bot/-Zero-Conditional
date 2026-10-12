@@ -74,19 +74,19 @@ export const SortingGame: React.FC<SortingGameProps> = ({
 
   if (completed) {
     return (
-      <div className="bg-white rounded-3xl border-2 border-indigo-200 p-8 text-center max-w-xl mx-auto shadow-xl">
-        <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-800 flex items-center justify-center mx-auto text-3xl font-black mb-4 border border-emerald-300">
+      <div className="bg-[#070A14] rounded-3xl border-2 border-slate-800 p-8 sm:p-12 text-center shadow-2xl">
+        <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-violet-600 via-fuchsia-600 to-pink-500 text-white flex items-center justify-center mx-auto mb-4 text-2xl shadow-xl shadow-violet-500/30">
           🏆
         </div>
-        <h3 className="text-2xl font-black text-slate-900 font-display">Sorting Challenge Completed!</h3>
-        <p className="text-sm text-slate-600 mt-2 font-medium">
-          Teacher Ana Espitia's tally: You accurately categorized <span className="font-black text-indigo-700">{score}</span> of {deck.length} classroom situations!
+        <h3 className="text-2xl font-black text-white font-display">Sorting Challenge Completed!</h3>
+        <p className="text-sm text-slate-300 mt-2 font-medium">
+          Teacher Ana Espitia's tally: You accurately categorized <span className="font-black text-violet-400">{score}</span> of {deck.length} classroom situations!
         </p>
 
         <div className="mt-6">
           <button
             onClick={handleRestart}
-            className="px-6 py-3 rounded-2xl text-sm font-black text-white bg-slate-900 hover:bg-slate-800 transition-colors inline-flex items-center gap-2 cursor-pointer shadow-md"
+            className="px-6 py-3 rounded-2xl text-sm font-black text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all inline-flex items-center gap-2 cursor-pointer shadow-lg shadow-violet-500/30"
           >
             <RotateCcw className="w-4 h-4" />
             <span>Play Again</span>
@@ -99,25 +99,25 @@ export const SortingGame: React.FC<SortingGameProps> = ({
   if (!currentItem) return null;
 
   return (
-    <div className="bg-white rounded-3xl border-2 border-indigo-100 p-5 sm:p-7 shadow-lg">
+    <div className="bg-[#070A14] rounded-3xl border-2 border-slate-800 p-5 sm:p-7 shadow-2xl">
       {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
         <div>
-          <h3 className="font-black text-slate-900 text-lg sm:text-xl font-display">
+          <h3 className="font-black text-white text-lg sm:text-xl font-display">
             Classification Arena: Zero vs. First Conditional
           </h3>
-          <p className="text-xs sm:text-sm text-slate-500 mt-0.5">
+          <p className="text-xs sm:text-sm text-slate-400 mt-0.5">
             Identify whether each educational statement is a permanent classroom rule (Zero) or a future outcome (First).
           </p>
         </div>
 
-        <div className="flex items-center gap-3 text-xs font-bold text-slate-700 self-start sm:self-auto">
-          <span className="text-slate-400">Card:</span>
-          <span className="font-black text-slate-900 tabular-nums">
+        <div className="flex items-center gap-3 text-xs font-bold text-slate-300 self-start sm:self-auto">
+          <span className="text-slate-500">Card:</span>
+          <span className="font-black text-white tabular-nums">
             {currentIndex + 1} / {deck.length}
           </span>
-          <span className="text-slate-300">·</span>
-          <span className="text-emerald-600 font-extrabold tabular-nums">
+          <span className="text-slate-700">·</span>
+          <span className="text-emerald-400 font-extrabold tabular-nums">
             {score} Correct
           </span>
         </div>
@@ -125,43 +125,43 @@ export const SortingGame: React.FC<SortingGameProps> = ({
 
       {/* Target Sentence Card */}
       <div className="my-6">
-        <div className="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-50 via-indigo-50/20 to-slate-50 border-2 border-indigo-100 text-center relative overflow-hidden shadow-inner">
-          <span className="text-xs font-black text-indigo-700 uppercase tracking-wider mb-2 block">
+        <div className="p-6 sm:p-8 rounded-2xl bg-[#0A0F22] border-2 border-slate-800 text-center relative overflow-hidden shadow-inner">
+          <span className="text-xs font-black text-indigo-400 uppercase tracking-wider mb-2 block">
             Classroom Context: {currentItem.context}
           </span>
 
-          <p className="text-xl sm:text-2xl font-bold text-slate-900 max-w-2xl mx-auto leading-relaxed font-sans">
+          <p className="text-xl sm:text-2xl font-bold text-white max-w-2xl mx-auto leading-relaxed font-sans">
             "{currentItem.fullSentence}"
           </p>
 
           <div className="mt-4 flex justify-center">
             <button
               onClick={() => soundManager.speak(currentItem.fullSentence)}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-700 hover:text-slate-900 bg-white px-3.5 py-1.5 rounded-xl border border-slate-200 transition-colors shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-300 hover:text-white bg-[#0F1528] hover:bg-[#161F3C] px-3.5 py-1.5 rounded-xl border border-slate-700 transition-colors shadow-sm cursor-pointer"
             >
-              <Volume2 className="w-3.5 h-3.5 text-indigo-600" />
+              <Volume2 className="w-3.5 h-3.5 text-violet-400" />
               <span>Listen Sentence</span>
             </button>
           </div>
         </div>
 
-        {/* Big Interactive Decision Buttons with Vibrant Colors */}
+        {/* Big Interactive Decision Buttons with Sleek Dark Styling */}
         {!lastAnswer ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
             {/* Zero Conditional Button */}
             <button
               onClick={() => handleClassify('zero')}
-              className="p-6 rounded-3xl border-4 border-violet-400 bg-gradient-to-br from-violet-100 via-purple-50 to-indigo-100 hover:from-violet-200 hover:to-indigo-200 text-left transition-all hover:scale-[1.02] active:scale-[0.99] cursor-pointer group shadow-xl hover:shadow-2xl"
+              className="p-6 rounded-3xl border-2 border-violet-500/50 bg-[#100A22] hover:bg-[#180F33] hover:border-violet-400 text-left transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer group shadow-xl"
             >
               <div className="flex items-center gap-3.5">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600 text-white flex items-center justify-center shadow-lg group-hover:rotate-3 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-violet-600 via-purple-600 to-indigo-600 text-white flex items-center justify-center shadow-lg group-hover:rotate-3 transition-transform shrink-0">
                   <ShieldCheck className="w-7 h-7" />
                 </div>
                 <div>
-                  <h4 className="font-black text-violet-950 text-lg group-hover:text-violet-900">
+                  <h4 className="font-black text-white text-lg group-hover:text-violet-300">
                     Zero Conditional
                   </h4>
-                  <p className="text-xs text-slate-700 font-bold mt-0.5">
+                  <p className="text-xs text-slate-300 font-medium mt-0.5 leading-relaxed">
                     Classroom rule, routine, or universal fact (Present Simple + Present Simple)
                   </p>
                 </div>
@@ -171,17 +171,17 @@ export const SortingGame: React.FC<SortingGameProps> = ({
             {/* First Conditional Button */}
             <button
               onClick={() => handleClassify('first')}
-              className="p-6 rounded-3xl border-4 border-emerald-400 bg-gradient-to-br from-emerald-100 via-teal-50 to-cyan-100 hover:from-emerald-200 hover:to-cyan-200 text-left transition-all hover:scale-[1.02] active:scale-[0.99] cursor-pointer group shadow-xl hover:shadow-2xl"
+              className="p-6 rounded-3xl border-2 border-teal-500/50 bg-[#06181C] hover:bg-[#0B252B] hover:border-teal-400 text-left transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer group shadow-xl"
             >
               <div className="flex items-center gap-3.5">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-cyan-600 text-white flex items-center justify-center shadow-lg group-hover:rotate-3 transition-transform">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 via-teal-600 to-cyan-600 text-white flex items-center justify-center shadow-lg group-hover:rotate-3 transition-transform shrink-0">
                   <CalendarClock className="w-7 h-7" />
                 </div>
                 <div>
-                  <h4 className="font-black text-emerald-950 text-lg group-hover:text-emerald-900">
+                  <h4 className="font-black text-white text-lg group-hover:text-teal-300">
                     First Conditional
                   </h4>
-                  <p className="text-xs text-slate-700 font-bold mt-0.5">
+                  <p className="text-xs text-slate-300 font-medium mt-0.5 leading-relaxed">
                     Probable future event, plan, or specific prediction (Present Simple + will)
                   </p>
                 </div>
@@ -193,25 +193,25 @@ export const SortingGame: React.FC<SortingGameProps> = ({
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`p-5 rounded-2xl border-2 shadow-md ${
+            className={`p-5 rounded-2xl border-2 shadow-xl ${
               lastAnswer.isCorrect
-                ? 'bg-emerald-50/90 border-emerald-300'
-                : 'bg-rose-50/90 border-rose-300'
+                ? 'bg-[#061914] border-emerald-500/50'
+                : 'bg-[#1A0A10] border-rose-500/50'
             }`}
           >
             <div className="flex items-start gap-3">
               <div className="mt-0.5 shrink-0">
                 {lastAnswer.isCorrect ? (
-                  <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+                  <CheckCircle2 className="w-6 h-6 text-emerald-400" />
                 ) : (
-                  <XCircle className="w-6 h-6 text-rose-600" />
+                  <XCircle className="w-6 h-6 text-rose-400" />
                 )}
               </div>
 
               <div className="flex-1">
                 <h4
                   className={`font-black text-sm sm:text-base ${
-                    lastAnswer.isCorrect ? 'text-emerald-950' : 'text-rose-950'
+                    lastAnswer.isCorrect ? 'text-emerald-300' : 'text-rose-300'
                   }`}
                 >
                   {lastAnswer.isCorrect
@@ -223,20 +223,20 @@ export const SortingGame: React.FC<SortingGameProps> = ({
                       }`}
                 </h4>
 
-                <p className="text-xs sm:text-sm text-slate-800 mt-1 font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-slate-200 mt-1 font-medium leading-relaxed">
                   {lastAnswer.item.microFeedbackEn}
                 </p>
 
-                <div className="mt-2.5 text-xs font-mono font-bold text-slate-700 bg-white p-2.5 rounded-xl border border-slate-200 shadow-xs">
-                  Grammar Verbs: {lastAnswer.item.verb1} ➔ {lastAnswer.item.verb2}
+                <div className="mt-2.5 text-xs font-mono font-bold text-slate-300 bg-black/60 p-2.5 rounded-xl border border-white/10 shadow-inner">
+                  Grammar Verbs: <span className="text-violet-300">{lastAnswer.item.verb1}</span> ➔ <span className="text-emerald-300">{lastAnswer.item.verb2}</span>
                 </div>
               </div>
             </div>
 
-            <div className="mt-4 pt-3 border-t border-black/10 flex justify-end">
+            <div className="mt-4 pt-3 border-t border-white/10 flex justify-end">
               <button
                 onClick={handleNext}
-                className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black text-white bg-slate-900 hover:bg-slate-800 transition-colors flex items-center gap-2 cursor-pointer shadow-md"
+                className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-violet-500/30"
               >
                 <span>Next Sentence</span>
                 <ArrowRight className="w-4 h-4" />

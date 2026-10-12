@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Copy, Check, Volume2, Printer, ShieldCheck, CalendarClock, Sparkles } from 'lucide-react';
+import { Copy, Check, Volume2, Printer, ShieldCheck, CalendarClock } from 'lucide-react';
 import { ZERO_CONDITIONAL_SENTENCES, FIRST_CONDITIONAL_SENTENCES } from '../data/sentences';
 import { ConditionalType } from '../types/grammar';
 import { soundManager } from '../utils/audio';
@@ -53,17 +53,17 @@ export const AnswerKeyView: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white rounded-3xl border-2 border-indigo-100 p-5 sm:p-7 shadow-lg">
+    <div className="bg-[#070A14] rounded-3xl border-2 border-slate-800 p-5 sm:p-7 shadow-2xl">
       {/* Top Header & Copy Action */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-slate-800">
         <div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-violet-600 animate-pulse" />
-            <h3 className="font-black text-slate-900 text-lg sm:text-xl font-display">
+            <span className="w-2.5 h-2.5 rounded-full bg-violet-400 animate-pulse" />
+            <h3 className="font-black text-white text-lg sm:text-xl font-display">
               Teacher Ana Espitia's Official Answer Key & Reference Guide
             </h3>
           </div>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1">
+          <p className="text-xs sm:text-sm text-slate-400 mt-1">
             Complete grammatical breakdown, verb analysis, and bite-sized pedagogical feedback for all 20 sentences.
           </p>
         </div>
@@ -71,7 +71,7 @@ export const AnswerKeyView: React.FC = () => {
         <div className="flex items-center gap-2 self-start sm:self-auto">
           <button
             onClick={copyFullKeyToClipboard}
-            className="px-4 py-2.5 rounded-xl text-xs font-black text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 transition-all flex items-center gap-2 cursor-pointer shadow-md"
+            className="px-4 py-2.5 rounded-xl text-xs font-black text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-violet-500/30"
           >
             {copied ? (
               <>
@@ -88,101 +88,101 @@ export const AnswerKeyView: React.FC = () => {
 
           <button
             onClick={handlePrint}
-            className="px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
+            className="px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-300 hover:text-white bg-[#0D1222] hover:bg-[#151D36] border border-slate-700 transition-colors flex items-center gap-1.5 cursor-pointer shadow-sm"
             title="Print worksheet"
           >
-            <Printer className="w-4 h-4" />
+            <Printer className="w-4 h-4 text-violet-400" />
             <span className="hidden sm:inline">Print / PDF</span>
           </button>
         </div>
       </div>
 
-      {/* Grammar Formula Comparison Cards with Vibrant Colors */}
+      {/* Grammar Formula Comparison Cards with Sleek Black Styling */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
         {/* Zero Conditional Card */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-violet-50 via-purple-50/50 to-indigo-50 border-2 border-violet-200 shadow-sm">
+        <div className="p-5 rounded-2xl bg-[#0F0A1E] border-2 border-violet-500/40 shadow-xl">
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-9 h-9 rounded-xl bg-gradient-to-r from-violet-600 to-indigo-600 text-white flex items-center justify-center shadow-md">
               <ShieldCheck className="w-5 h-5" />
             </span>
             <div>
-              <h4 className="font-black text-violet-950 text-base">
+              <h4 className="font-black text-white text-base">
                 Zero Conditional: Rules & Universal Facts
               </h4>
-              <span className="text-[11px] font-bold text-violet-600 uppercase tracking-wider">
+              <span className="text-[11px] font-bold text-violet-400 uppercase tracking-wider">
                 100% Certain / Standard Policy
               </span>
             </div>
           </div>
-          <p className="text-xs font-mono font-bold bg-white p-3 rounded-xl border border-violet-200 text-slate-900 shadow-inner">
-            If / When + <span className="text-violet-700">Present Simple</span>,{' '}
-            <span className="text-indigo-700">Present Simple</span>
+          <p className="text-xs font-mono font-bold bg-black/70 p-3 rounded-xl border border-violet-500/30 text-slate-200 shadow-inner">
+            If / When + <span className="text-violet-300">Present Simple</span>,{' '}
+            <span className="text-indigo-300">Present Simple</span>
           </p>
-          <p className="text-xs text-slate-700 font-medium mt-2.5 leading-relaxed">
+          <p className="text-xs text-slate-300 font-medium mt-2.5 leading-relaxed">
             Used for official classroom regulations, institutional routines, and natural causes. Both clauses take Present Simple.
           </p>
         </div>
 
         {/* First Conditional Card */}
-        <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-50 via-teal-50/50 to-emerald-50 border-2 border-emerald-200 shadow-sm">
+        <div className="p-5 rounded-2xl bg-[#06181C] border-2 border-teal-500/40 shadow-xl">
           <div className="flex items-center gap-2.5 mb-2.5">
             <span className="w-9 h-9 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white flex items-center justify-center shadow-md">
               <CalendarClock className="w-5 h-5" />
             </span>
             <div>
-              <h4 className="font-black text-emerald-950 text-base">
+              <h4 className="font-black text-white text-base">
                 First Conditional: Real Future Plans & Predictions
               </h4>
-              <span className="text-[11px] font-bold text-emerald-600 uppercase tracking-wider">
+              <span className="text-[11px] font-bold text-teal-400 uppercase tracking-wider">
                 Realistic Future Consequence
               </span>
             </div>
           </div>
-          <p className="text-xs font-mono font-bold bg-white p-3 rounded-xl border border-emerald-200 text-slate-900 shadow-inner">
-            If + <span className="text-emerald-700">Present Simple</span>,{' '}
-            <span className="text-teal-700">will / won't + Base Verb</span>
+          <p className="text-xs font-mono font-bold bg-black/70 p-3 rounded-xl border border-teal-500/30 text-slate-200 shadow-inner">
+            If + <span className="text-emerald-300">Present Simple</span>,{' '}
+            <span className="text-teal-300">will / won't + Base Verb</span>
           </p>
-          <p className="text-xs text-slate-700 font-medium mt-2.5 leading-relaxed">
+          <p className="text-xs text-slate-300 font-medium mt-2.5 leading-relaxed">
             Used for specific future possibilities (e.g. tomorrow's test, next Monday's workshop). The condition is in Present Simple, result has will.
           </p>
         </div>
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-1.5 p-1.5 bg-slate-100 rounded-2xl self-start mb-6">
+      <div className="flex items-center gap-1.5 p-1.5 bg-[#0D1222] rounded-2xl border border-slate-800 self-start mb-6">
         <button
           onClick={() => setActiveTab('all')}
-          className={`px-4 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+          className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
             activeTab === 'all'
               ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-md'
-              : 'text-slate-600 hover:text-slate-900'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
           }`}
         >
           All 20 Sentences
         </button>
         <button
           onClick={() => setActiveTab('zero')}
-          className={`px-4 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+          className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
             activeTab === 'zero'
               ? 'bg-gradient-to-r from-violet-600 to-purple-600 text-white shadow-md'
-              : 'text-slate-600 hover:text-slate-900'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
           }`}
         >
           10 Zero Conditional
         </button>
         <button
           onClick={() => setActiveTab('first')}
-          className={`px-4 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+          className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all cursor-pointer ${
             activeTab === 'first'
               ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md'
-              : 'text-slate-600 hover:text-slate-900'
+              : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
           }`}
         >
           10 First Conditional
         </button>
       </div>
 
-      {/* Sentences Detailed Breakdown List */}
+      {/* Sentences Detailed Breakdown List (Sleek Obsidian Cards) */}
       <div className="space-y-4">
         {displayedSentences.map((sentence, idx) => {
           const isZero = sentence.type === 'zero';
@@ -192,16 +192,16 @@ export const AnswerKeyView: React.FC = () => {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: idx * 0.02 }}
-              className={`p-5 rounded-2xl border-2 transition-all shadow-xs hover:shadow-md ${
+              className={`p-5 rounded-2xl border-2 transition-all shadow-md hover:shadow-xl ${
                 isZero
-                  ? 'bg-gradient-to-br from-violet-50/60 to-white border-violet-200/90'
-                  : 'bg-gradient-to-br from-emerald-50/60 to-white border-emerald-200/90'
+                  ? 'bg-[#0B0F22] border-violet-500/30 hover:border-violet-400/60'
+                  : 'bg-[#06151A] border-teal-500/30 hover:border-teal-400/60'
               }`}
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-black/5">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-white/10">
                 <div className="flex items-center gap-2.5">
                   <span
-                    className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shadow-xs ${
+                    className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shadow-sm ${
                       isZero
                         ? 'bg-violet-600 text-white'
                         : 'bg-emerald-600 text-white'
@@ -209,16 +209,16 @@ export const AnswerKeyView: React.FC = () => {
                   >
                     {idx + 1}
                   </span>
-                  <h4 className="font-extrabold text-slate-900 text-sm sm:text-base">
+                  <h4 className="font-extrabold text-white text-sm sm:text-base">
                     {sentence.title}
                   </h4>
-                  <span className="text-xs text-slate-300">·</span>
-                  <span className="text-xs font-bold text-slate-500">{sentence.context}</span>
+                  <span className="text-xs text-slate-600">·</span>
+                  <span className="text-xs font-bold text-slate-400">{sentence.context}</span>
                 </div>
 
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-lg text-white ${
+                    className={`text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-lg text-white shadow-sm ${
                       isZero
                         ? 'bg-gradient-to-r from-violet-600 to-indigo-600'
                         : 'bg-gradient-to-r from-emerald-500 to-teal-600'
@@ -230,38 +230,38 @@ export const AnswerKeyView: React.FC = () => {
                   <button
                     onClick={() => soundManager.speak(sentence.fullSentence)}
                     title="Listen pronunciation"
-                    className="p-1.5 rounded-xl text-slate-600 hover:text-slate-900 bg-white border border-slate-200 hover:bg-slate-50 shadow-xs transition-colors cursor-pointer"
+                    className="p-1.5 rounded-xl text-slate-300 hover:text-white bg-black/60 border border-slate-700 hover:bg-black/90 shadow-sm transition-colors cursor-pointer"
                   >
-                    <Volume2 className="w-4 h-4 text-indigo-600" />
+                    <Volume2 className="w-4 h-4 text-violet-400" />
                   </button>
                 </div>
               </div>
 
               {/* Full English Sentence */}
-              <p className="text-base sm:text-lg font-bold text-slate-900 leading-snug font-sans">
+              <p className="text-base sm:text-lg font-bold text-white leading-snug font-sans">
                 "{sentence.fullSentence}"
               </p>
 
               {/* Verb Breakdown & Micro-feedback */}
-              <div className="mt-3.5 pt-3 border-t border-black/5 grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs">
-                <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-inner">
-                  <span className="font-black text-slate-700 block mb-1">Verb Mechanics:</span>
-                  <div className="font-mono text-slate-800 text-[11px] sm:text-xs font-bold">
-                    <span className="text-violet-700 bg-violet-50 px-2 py-0.5 rounded border border-violet-200">
+              <div className="mt-3.5 pt-3 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs">
+                <div className="p-3 rounded-xl bg-black/60 border border-slate-800 shadow-inner">
+                  <span className="font-black text-slate-300 block mb-1">Verb Mechanics:</span>
+                  <div className="font-mono text-slate-200 text-[11px] sm:text-xs font-bold">
+                    <span className="text-violet-300 bg-violet-950/60 px-2 py-0.5 rounded border border-violet-500/40">
                       {sentence.verb1}
                     </span>
-                    <span className="mx-2 text-slate-400">➔</span>
-                    <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                    <span className="mx-2 text-slate-500">➔</span>
+                    <span className="text-emerald-300 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/40">
                       {sentence.verb2}
                     </span>
                   </div>
                 </div>
 
-                <div className="p-3 rounded-xl bg-white border border-slate-200 shadow-inner">
-                  <span className="font-black text-slate-700 block mb-1">
+                <div className="p-3 rounded-xl bg-black/60 border border-slate-800 shadow-inner">
+                  <span className="font-black text-slate-300 block mb-1">
                     Teacher Ana Espitia's Key Insight:
                   </span>
-                  <p className="text-slate-700 font-medium leading-relaxed">
+                  <p className="text-slate-300 font-medium leading-relaxed">
                     {sentence.microFeedbackEn}
                   </p>
                 </div>

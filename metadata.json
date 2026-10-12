@@ -2,5 +2,5 @@
   "name": "GrammarQuest with Teacher Ana Espitia: Zero & First Conditional",
   "description": "Interactive English grammar hub with Teacher Ana Espitia for A2 adult learners. Master Zero and First Conditionals with vibrant interactive scenes and gamified practice.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": []
 }

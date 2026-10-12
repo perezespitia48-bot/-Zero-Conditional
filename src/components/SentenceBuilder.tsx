@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, RotateCcw, CheckCircle2, ArrowRight, Sparkles, Check } from 'lucide-react';
+import { Volume2, RotateCcw, CheckCircle2, ArrowRight } from 'lucide-react';
 import { SentenceItem } from '../types/grammar';
 import { soundManager } from '../utils/audio';
 
@@ -13,7 +13,7 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
   sentences,
   onSetTutorFeedback,
 }) => {
-  // Ensure exactly 10 sentences are used as requested by user
+  // Exactly 10 sentences as requested
   const activeSentences = sentences.slice(0, 10);
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -60,14 +60,14 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
       setCompletedSentenceIds((prev) => new Set(prev).add(currentSentence.id));
       if (onSetTutorFeedback) {
         onSetTutorFeedback(
-          `Teacher Ana Espitia applauds: "Masterful syntax! You formed Sentence #${currentIndex + 1} with exact punctuation: '${currentSentence.fullSentence}'"`
+          `Teacher Ana Espitia applauds: "Masterful sentence architecture! '${currentSentence.fullSentence}' has perfect conditional structure."`
         );
       }
     } else {
       soundManager.playError();
       if (onSetTutorFeedback) {
         onSetTutorFeedback(
-          `Teacher Ana Espitia advises: "Review the sequence: '${currentSentence.ruleFormula}'. Starting with 'If' requires an intermediate comma before the result clause."`
+          `Teacher Ana Espitia advises: "Review the position of 'If' and the intermediate comma. Hint: ${currentSentence.commonMistakeTip}"`
         );
       }
     }
@@ -89,29 +89,29 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-3xl border-2 border-indigo-200 p-5 sm:p-7 shadow-xl">
+    <div className="bg-[#070A14] rounded-3xl border-2 border-slate-800 p-5 sm:p-7 shadow-2xl">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-800">
         <div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-pulse" />
-            <h3 className="font-black text-slate-900 text-lg sm:text-2xl font-display">
+            <span className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-pulse" />
+            <h3 className="font-black text-white text-lg sm:text-2xl font-display">
               10-Sentence Syntax & Punctuation Builder
             </h3>
           </div>
-          <p className="text-xs sm:text-sm text-slate-600 mt-1 font-medium">
+          <p className="text-xs sm:text-sm text-slate-300 mt-1 font-medium">
             Solve the 10 curated core sentences. Place the word tokens in exact order, observing capital letters and intermediate commas.
           </p>
         </div>
 
-        <div className="flex items-center gap-2 text-xs font-black text-indigo-700 bg-indigo-50 px-3.5 py-1.5 rounded-xl border border-indigo-200 self-start sm:self-auto">
+        <div className="flex items-center gap-2 text-xs font-black text-cyan-300 bg-cyan-950/60 px-3.5 py-1.5 rounded-xl border border-cyan-700/50 self-start sm:self-auto">
           <span>Completed: {completedSentenceIds.size} / 10</span>
         </div>
       </div>
 
-      {/* 10 Sentence Quick Navigation Bubbles */}
-      <div className="mt-4 p-3 bg-slate-50 rounded-2xl border border-slate-200 flex flex-wrap items-center gap-2">
-        <span className="text-xs font-bold text-slate-500 mr-1">Sentence:</span>
+      {/* 10 Sentence Quick Navigation Bubbles with Dark Glass */}
+      <div className="mt-4 p-3 bg-[#0A0E1E] rounded-2xl border border-slate-800 flex flex-wrap items-center gap-2">
+        <span className="text-xs font-bold text-slate-400 mr-1">Sentence:</span>
         {activeSentences.map((s, idx) => {
           const isCurrent = currentIndex === idx;
           const isDone = completedSentenceIds.has(s.id);
@@ -121,10 +121,10 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
               onClick={() => handleSelectIndex(idx)}
               className={`w-8 h-8 rounded-xl text-xs font-black transition-all flex items-center justify-center cursor-pointer shadow-xs ${
                 isCurrent
-                  ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white ring-2 ring-indigo-400 scale-105'
+                  ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white ring-2 ring-violet-400 scale-105'
                   : isDone
-                  ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                  : 'bg-white text-slate-700 hover:bg-slate-200/70 border border-slate-200'
+                  ? 'bg-emerald-950/80 text-emerald-300 border border-emerald-500/60'
+                  : 'bg-[#10162B] text-slate-300 hover:bg-[#161F3C] border border-slate-700'
               }`}
             >
               {isDone ? '✓' : idx + 1}
@@ -134,29 +134,29 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
       </div>
 
       {/* Target Situation Clue */}
-      <div className="my-5 p-4 sm:p-5 rounded-2xl bg-gradient-to-br from-indigo-50/70 via-white to-purple-50/50 border-2 border-indigo-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
+      <div className="my-5 p-4 sm:p-5 rounded-2xl bg-[#0A0F22] border-2 border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-inner">
         <div>
-          <span className="text-xs font-black text-indigo-700 uppercase tracking-wider block mb-1">
+          <span className="text-xs font-black text-indigo-400 uppercase tracking-wider block mb-1">
             Sentence #{currentIndex + 1} of 10: {currentSentence.title} ({currentSentence.context})
           </span>
-          <p className="text-sm sm:text-base font-bold text-slate-900">
+          <p className="text-sm sm:text-base font-bold text-white">
             Arrange the tokens to form this conditional sentence correctly.
           </p>
         </div>
 
         <button
           onClick={() => soundManager.speak(currentSentence.fullSentence)}
-          className="inline-flex items-center gap-1.5 text-xs font-extrabold text-slate-800 hover:text-slate-950 bg-white px-4 py-2 rounded-xl border border-slate-200 transition-all shadow-xs shrink-0 self-start sm:self-auto cursor-pointer hover:border-indigo-300"
+          className="inline-flex items-center gap-1.5 text-xs font-extrabold text-slate-200 hover:text-white bg-[#0F162A] hover:bg-[#152040] px-4 py-2 rounded-xl border border-slate-700 transition-all shrink-0 self-start sm:self-auto cursor-pointer"
         >
-          <Volume2 className="w-4 h-4 text-indigo-600" />
+          <Volume2 className="w-4 h-4 text-violet-400" />
           <span>Listen Target</span>
         </button>
       </div>
 
-      {/* Slot Drop Zone for Selected Words */}
-      <div className="min-h-[110px] p-4 sm:p-5 rounded-2xl border-2 border-dashed border-indigo-300 bg-indigo-50/25 flex flex-wrap items-center gap-2.5 transition-colors">
+      {/* Slot Drop Zone for Selected Words (Deep Black & Glowing Border) */}
+      <div className="min-h-[110px] p-4 sm:p-5 rounded-2xl border-2 border-dashed border-indigo-500/40 bg-[#04060D] flex flex-wrap items-center gap-2.5 transition-colors">
         {selectedWords.length === 0 ? (
-          <span className="text-xs sm:text-sm text-slate-400 font-semibold italic">
+          <span className="text-xs sm:text-sm text-slate-500 font-semibold italic">
             Tap the word cards below in correct grammatical order...
           </span>
         ) : (
@@ -167,7 +167,7 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               onClick={() => handleSelectedWordClick(word, idx)}
-              className="px-3.5 py-2 rounded-xl bg-white text-slate-900 text-xs sm:text-sm font-bold border-2 border-indigo-200 shadow-sm hover:border-rose-400 hover:bg-rose-50 transition-all cursor-pointer"
+              className="px-3.5 py-2 rounded-xl bg-[#121932] text-white text-xs sm:text-sm font-bold border-2 border-violet-500/50 shadow-md hover:border-rose-400 hover:bg-rose-950/60 transition-all cursor-pointer"
               title="Click to remove from slot"
             >
               {word}
@@ -178,7 +178,7 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
 
       {/* Available Scrambled Words */}
       <div className="mt-5">
-        <span className="text-xs font-extrabold text-slate-600 uppercase tracking-wider block mb-2">
+        <span className="text-xs font-extrabold text-slate-400 uppercase tracking-wider block mb-2">
           Available Words for Sentence #{currentIndex + 1}:
         </span>
         <div className="flex flex-wrap gap-2.5 min-h-[48px]">
@@ -188,7 +188,7 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => handleWordClick(word, idx)}
-              className="px-4 py-2 rounded-xl bg-gradient-to-br from-slate-100 to-indigo-50 hover:from-indigo-100 hover:to-indigo-200 text-slate-900 text-xs sm:text-sm font-bold border border-slate-300 shadow-xs transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-[#0D1326] hover:bg-[#151F3D] hover:border-violet-400 text-slate-200 hover:text-white text-xs sm:text-sm font-bold border border-slate-700 shadow-md transition-colors cursor-pointer"
             >
               {word}
             </motion.button>
@@ -197,10 +197,10 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
       </div>
 
       {/* Action Toolbar */}
-      <div className="mt-6 pt-4 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+      <div className="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
         <button
           onClick={handleClear}
-          className="px-4 py-2 rounded-xl text-xs font-bold text-slate-700 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
+          className="px-4 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white bg-[#0F1426] hover:bg-[#161F38] border border-slate-700 transition-colors flex items-center gap-1.5 cursor-pointer"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>Reset Words</span>
@@ -211,14 +211,14 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
             <button
               onClick={handleCheck}
               disabled={selectedWords.length === 0}
-              className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black text-white bg-slate-900 hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-all cursor-pointer shadow-md"
+              className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-500 hover:to-indigo-500 disabled:opacity-30 disabled:cursor-not-allowed transition-all cursor-pointer shadow-lg shadow-violet-500/30"
             >
               Verify Word Order
             </button>
           ) : (
             <button
               onClick={handleNextSentence}
-              className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black text-white bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 transition-all flex items-center gap-2 cursor-pointer shadow-md"
+              className="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-black text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 transition-all flex items-center gap-2 cursor-pointer shadow-lg shadow-emerald-500/30"
             >
               <span>Next Sentence ({currentIndex + 1 < 10 ? `${currentIndex + 2}/10` : 'Restart'})</span>
               <ArrowRight className="w-4 h-4" />
@@ -233,27 +233,27 @@ export const SentenceBuilder: React.FC<SentenceBuilderProps> = ({
           <motion.div
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`mt-4 p-5 rounded-2xl border-2 shadow-md ${
-              isCorrect ? 'bg-emerald-50 border-emerald-300' : 'bg-rose-50 border-rose-300'
+            className={`mt-4 p-5 rounded-2xl border-2 shadow-xl ${
+              isCorrect ? 'bg-[#061914] border-emerald-500/50' : 'bg-[#1A0A10] border-rose-500/50'
             }`}
           >
             <div className="flex items-start gap-3">
               {isCorrect ? (
-                <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0 mt-0.5" />
+                <CheckCircle2 className="w-6 h-6 text-emerald-400 shrink-0 mt-0.5" />
               ) : (
-                <div className="w-6 h-6 rounded-xl bg-rose-600 text-white flex items-center justify-center text-xs font-black shrink-0 mt-0.5">
+                <div className="w-6 h-6 rounded-xl bg-rose-500 text-white flex items-center justify-center text-xs font-black shrink-0 mt-0.5">
                   ✕
                 </div>
               )}
 
               <div>
-                <p className={`font-black text-sm sm:text-base ${isCorrect ? 'text-emerald-950' : 'text-rose-950'}`}>
+                <p className={`font-black text-sm sm:text-base ${isCorrect ? 'text-emerald-300' : 'text-rose-300'}`}>
                   {isCorrect ? 'Terrific Syntax! Well done!' : 'Word Order Needs Adjustment'}
                 </p>
-                <p className="text-xs sm:text-sm text-slate-800 mt-1 font-medium">
-                  Model Solution: <span className="font-bold">"{currentSentence.fullSentence}"</span>
+                <p className="text-xs sm:text-sm text-slate-200 mt-1 font-medium">
+                  Model Solution: <span className="font-bold text-white">"{currentSentence.fullSentence}"</span>
                 </p>
-                <p className="text-xs text-slate-600 mt-1 font-semibold">
+                <p className="text-xs text-amber-300 mt-1 font-semibold">
                   💡 Teacher Ana Espitia's Rule: {currentSentence.commonMistakeTip}
                 </p>
               </div>

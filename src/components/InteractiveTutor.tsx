@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Volume2, Sparkles, RefreshCw, ChevronRight, GraduationCap } from 'lucide-react';
+import { Volume2, RefreshCw, ChevronRight, GraduationCap } from 'lucide-react';
 import { TUTORS } from '../data/sentences';
 import { TutorId, TutorMood } from '../types/grammar';
 import { soundManager } from '../utils/audio';
@@ -95,27 +95,27 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
   };
 
   return (
-    <div className="relative bg-white rounded-3xl border-2 border-indigo-200 p-5 sm:p-6 shadow-md transition-all hover:shadow-lg">
+    <div className="relative bg-[#080B14] rounded-3xl border-2 border-slate-800 p-5 sm:p-6 shadow-2xl transition-all">
       {/* Top Header with character switcher */}
-      <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-100">
+      <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-800">
         <div className="flex items-center gap-2">
-          <span className="w-2.5 h-2.5 rounded-full bg-violet-600 animate-pulse" />
-          <span className="text-xs font-extrabold uppercase tracking-wider text-indigo-900 flex items-center gap-1.5 font-display">
-            <GraduationCap className="w-4 h-4 text-indigo-600" />
+          <span className="w-2.5 h-2.5 rounded-full bg-violet-400 animate-pulse shadow-sm shadow-violet-400" />
+          <span className="text-xs font-black uppercase tracking-wider text-slate-200 flex items-center gap-1.5 font-display">
+            <GraduationCap className="w-4 h-4 text-violet-400" />
             Interactive Learning Mentors (A2)
           </span>
-          <span className="text-xs text-slate-300">·</span>
-          <span className="text-xs font-semibold text-slate-500">Live Voice & Explanations</span>
+          <span className="text-xs text-slate-600">·</span>
+          <span className="text-xs font-semibold text-slate-400">Live Voice & Direct Explanations</span>
         </div>
 
-        {/* Character switch buttons */}
-        <div className="flex items-center gap-1.5 bg-slate-100 p-1.5 rounded-2xl">
+        {/* Character switch buttons with sleek dark glass */}
+        <div className="flex items-center gap-1.5 bg-[#0D1222] p-1.5 rounded-2xl border border-slate-800">
           <button
             onClick={() => handleSwitchTutor('ana')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
               activeTutor === 'ana'
-                ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-md'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-gradient-to-r from-violet-600 to-indigo-600 text-white shadow-lg shadow-violet-500/30'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
             }`}
           >
             <span>👩‍🏫</span>
@@ -123,10 +123,10 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
           </button>
           <button
             onClick={() => handleSwitchTutor('marco')}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-2 cursor-pointer ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-black transition-all flex items-center gap-2 cursor-pointer ${
               activeTutor === 'marco'
-                ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-md'
-                : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white shadow-lg shadow-emerald-500/30'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/50'
             }`}
           >
             <span>🎒</span>
@@ -136,7 +136,7 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
       </div>
 
       {/* Main interactive area with character avatar & speech balloon */}
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-12 gap-5 items-center">
         {/* Character interactive avatar portrait */}
         <div className="md:col-span-4 flex flex-col items-center text-center">
           <div
@@ -147,16 +147,16 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
             <motion.div
               animate={isWaving ? { rotate: [0, -10, 10, -5, 5, 0], scale: [1, 1.08, 1] } : {}}
               transition={{ duration: 0.6 }}
-              className={`relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden border-4 shadow-xl transition-all ${
+              className={`relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden border-2 shadow-2xl transition-all ${
                 activeTutor === 'ana'
-                  ? 'border-violet-400 ring-4 ring-violet-100'
-                  : 'border-emerald-400 ring-4 ring-emerald-100'
+                  ? 'border-violet-500/80 ring-4 ring-violet-500/20'
+                  : 'border-emerald-500/80 ring-4 ring-emerald-500/20'
               }`}
             >
               <img
                 src={tutor.avatarUrl}
                 alt={tutor.name}
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-108"
                 referrerPolicy="no-referrer"
               />
             </motion.div>
@@ -165,7 +165,7 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              className="absolute -bottom-2 -right-1 px-3 py-1 rounded-full text-xs font-black bg-slate-900 text-white shadow-md border border-slate-700 flex items-center gap-1"
+              className="absolute -bottom-2 -right-1 px-3 py-1 rounded-full text-[11px] font-black bg-black/90 text-white shadow-xl border border-slate-700 flex items-center gap-1"
             >
               <span>✨</span>
               <span>Tap me!</span>
@@ -173,12 +173,12 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
           </div>
 
           <div className="mt-3">
-            <h4 className="font-extrabold text-slate-900 text-sm sm:text-base">{tutor.name}</h4>
-            <p className="text-xs text-slate-500 font-medium max-w-[200px]">{tutor.role}</p>
+            <h4 className="font-black text-white text-sm sm:text-base">{tutor.name}</h4>
+            <p className="text-xs text-slate-400 font-medium max-w-[200px]">{tutor.role}</p>
           </div>
         </div>
 
-        {/* Speech Balloon with dynamic explanation */}
+        {/* Speech Balloon with sleek black background */}
         <div className="md:col-span-8">
           <AnimatePresence mode="wait">
             <motion.div
@@ -187,26 +187,26 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.2 }}
-              className={`relative rounded-2xl p-5 border-2 ${
+              className={`relative rounded-2xl p-5 border-2 shadow-xl ${
                 activeTutor === 'ana'
-                  ? 'bg-gradient-to-br from-indigo-50/90 to-purple-50/60 border-indigo-200'
-                  : 'bg-gradient-to-br from-emerald-50/90 to-teal-50/60 border-emerald-200'
+                  ? 'bg-[#0B1024] border-violet-500/40'
+                  : 'bg-[#06171B] border-emerald-500/40'
               }`}
             >
               {/* Balloon tail indicator */}
               <div
                 className={`hidden md:block absolute -left-2.5 top-9 w-4 h-4 transform rotate-45 border-l-2 border-b-2 ${
                   activeTutor === 'ana'
-                    ? 'bg-indigo-50 border-indigo-200'
-                    : 'bg-emerald-50 border-emerald-200'
+                    ? 'bg-[#0B1024] border-violet-500/40'
+                    : 'bg-[#06171B] border-emerald-500/40'
                 }`}
               />
 
               {/* Header inside balloon */}
-              <div className="flex items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-black/5">
+              <div className="flex items-center justify-between gap-2 pb-2.5 mb-2.5 border-b border-white/10">
                 <div className="flex items-center gap-2">
                   <span
-                    className={`text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-lg text-white ${
+                    className={`text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-lg text-white shadow-md ${
                       activeTutor === 'ana'
                         ? 'bg-gradient-to-r from-violet-600 to-indigo-600'
                         : 'bg-gradient-to-r from-emerald-500 to-teal-600'
@@ -215,7 +215,7 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
                     {customMessage ? 'Live Feedback' : currentTip.badge}
                   </span>
                   {!customMessage && (
-                    <span className="text-xs font-bold text-slate-800">
+                    <span className="text-xs font-bold text-slate-200">
                       {currentTip.title}
                     </span>
                   )}
@@ -226,39 +226,39 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
                     <button
                       onClick={handleSpeakTip}
                       title="Listen audio in English"
-                      className="p-1.5 rounded-xl text-slate-700 hover:text-slate-900 bg-white/80 hover:bg-white border border-slate-200 shadow-xs transition-colors cursor-pointer"
+                      className="p-1.5 rounded-xl text-slate-300 hover:text-white bg-black/60 hover:bg-black/90 border border-slate-700 shadow-sm transition-colors cursor-pointer"
                       aria-label="Listen speech"
                     >
-                      <Volume2 className="w-4 h-4 text-indigo-600" />
+                      <Volume2 className="w-4 h-4 text-violet-400" />
                     </button>
                   )}
                   {!customMessage && (
                     <button
                       onClick={handleNextTip}
                       title="Next grammar rule"
-                      className="p-1.5 rounded-xl text-slate-700 hover:text-slate-900 bg-white/80 hover:bg-white border border-slate-200 shadow-xs transition-colors cursor-pointer"
+                      className="p-1.5 rounded-xl text-slate-300 hover:text-white bg-black/60 hover:bg-black/90 border border-slate-700 shadow-sm transition-colors cursor-pointer"
                       aria-label="Next tip"
                     >
-                      <RefreshCw className="w-4 h-4 text-indigo-600" />
+                      <RefreshCw className="w-4 h-4 text-violet-400" />
                     </button>
                   )}
                 </div>
               </div>
 
               {/* Message text */}
-              <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed">
+              <p className="text-xs sm:text-sm text-slate-200 font-medium leading-relaxed">
                 {customMessage || currentTip.text}
               </p>
 
               {/* Quick action bar */}
               {!customMessage && (
-                <div className="mt-3.5 pt-2.5 border-t border-black/5 flex items-center justify-between text-xs">
-                  <span className="text-slate-500 font-medium text-[11px]">
+                <div className="mt-3.5 pt-2.5 border-t border-white/10 flex items-center justify-between text-xs">
+                  <span className="text-slate-400 font-medium text-[11px]">
                     Tip {tipIndex + 1} of {LESSON_TIPS.length}
                   </span>
                   <button
                     onClick={handleNextTip}
-                    className="inline-flex items-center gap-1 font-bold text-indigo-700 hover:text-indigo-900 cursor-pointer"
+                    className="inline-flex items-center gap-1 font-bold text-violet-300 hover:text-violet-200 cursor-pointer"
                   >
                     <span>Next Explanation</span>
                     <ChevronRight className="w-4 h-4" />
