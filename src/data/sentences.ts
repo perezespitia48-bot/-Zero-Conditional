@@ -6,7 +6,7 @@ export const TUTORS: Record<string, TutorCharacter> = {
     name: 'Teacher Ana Espitia',
     role: 'Lead English Instructor',
     specialty: 'Expert in Zero & First Conditionals in Real Classroom Life',
-    avatarUrl: '',
+    avatarUrl: '/images/teacher_ana.jpg',
     themeColor: {
       bg: 'bg-indigo-50',
       border: 'border-indigo-200',

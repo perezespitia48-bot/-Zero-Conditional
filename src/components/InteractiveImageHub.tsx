@@ -43,92 +43,11 @@ interface GrammarScenarioItem {
 
 const RICH_SCENARIOS: GrammarScenarioItem[] = [
   {
-    id: 'scen-exam',
-    type: 'first',
-    title: 'Exam Preparation & High Score',
-    categoryBadge: 'First Conditional: Upcoming Test',
-    imageUrl: '/src/assets/images/scenario_exam_success_1791767900485.jpg',
-    themeColor: {
-      badgeBg: 'bg-gradient-to-r from-fuchsia-600 via-pink-600 to-rose-600',
-      border: 'border-fuchsia-500/60',
-      glowRing: 'ring-fuchsia-500/50',
-      cardBg: 'from-[#140C24] via-[#0E081A] to-[#07040E]',
-      activeBorder: 'border-fuchsia-400 shadow-xl shadow-fuchsia-950/80',
-      showcaseBg: 'from-[#120722] via-[#0B0416] to-[#05020B]',
-      conditionBorder: 'border-fuchsia-500/60 bg-fuchsia-950/70 text-fuchsia-200',
-      resultBorder: 'border-pink-500/60 bg-pink-950/70 text-pink-200',
-      accentGradient: 'from-fuchsia-500 via-purple-600 to-pink-600',
-      highlightText: 'text-fuchsia-300',
-    },
-    fullSentence: 'If you review the grammar summary tonight, you will pass tomorrow’s test with a high score.',
-    ifClause: 'If you review the grammar summary tonight',
-    resultClause: 'you will pass tomorrow’s test with a high score',
-    ifVerb: 'review (Present Simple condition)',
-    resultVerb: 'will pass (Future outcome with will)',
-    formula: 'If + Present Simple, will + Base Verb',
-    whyThisStructure: 'Tomorrow’s test is a specific, real future event. The action happens tonight in the present, while the success will happen tomorrow.',
-    exerciseTip: 'Golden Rule: Never say "If you will review". Always put Present Simple directly after "If", and reserve "will pass" for the consequence clause!',
-  },
-  {
-    id: 'scen-laptop',
-    type: 'first',
-    title: 'Language Tech Workshop',
-    categoryBadge: 'First Conditional: Tech Class',
-    imageUrl: '/src/assets/images/scenario_laptop_workshop_1791767913147.jpg',
-    themeColor: {
-      badgeBg: 'bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500',
-      border: 'border-teal-500/60',
-      glowRing: 'ring-teal-500/50',
-      cardBg: 'from-[#071C1E] via-[#051314] to-[#03090A]',
-      activeBorder: 'border-teal-400 shadow-xl shadow-teal-950/80',
-      showcaseBg: 'from-[#051B1D] via-[#031113] to-[#020809]',
-      conditionBorder: 'border-teal-500/60 bg-teal-950/70 text-teal-200',
-      resultBorder: 'border-emerald-500/60 bg-emerald-950/70 text-emerald-200',
-      accentGradient: 'from-emerald-500 via-teal-500 to-cyan-500',
-      highlightText: 'text-teal-300',
-    },
-    fullSentence: 'If students bring their personal laptops to the workshop tomorrow, the instructor will install the speech practice software.',
-    ifClause: 'If students bring their personal laptops to the workshop tomorrow',
-    resultClause: 'the instructor will install the speech practice software',
-    ifVerb: 'bring (Present Simple plural)',
-    resultVerb: 'will install (Future with will + base verb)',
-    formula: 'If + Present Simple, will + Base Verb',
-    whyThisStructure: 'A planned collaborative laboratory tomorrow morning. Bringing laptops directly enables the instructor to install the software.',
-    exerciseTip: 'Comma Alert: When the sentence opens with "If", always place an intermediate comma (,) before the main clause ("the instructor will install").',
-  },
-  {
-    id: 'scen-team',
-    type: 'first',
-    title: 'Team Presentation Collaboration',
-    categoryBadge: 'First Conditional: Group Project',
-    imageUrl: '/src/assets/images/scenario_team_presentation_1791767923081.jpg',
-    themeColor: {
-      badgeBg: 'bg-gradient-to-r from-orange-500 via-amber-500 to-red-500',
-      border: 'border-amber-500/60',
-      glowRing: 'ring-amber-500/50',
-      cardBg: 'from-[#1C1206] via-[#140D04] to-[#0A0602]',
-      activeBorder: 'border-amber-400 shadow-xl shadow-amber-950/80',
-      showcaseBg: 'from-[#190F05] via-[#100A03] to-[#080501]',
-      conditionBorder: 'border-amber-500/60 bg-amber-950/70 text-amber-200',
-      resultBorder: 'border-orange-500/60 bg-orange-950/70 text-orange-200',
-      accentGradient: 'from-orange-500 via-amber-500 to-red-500',
-      highlightText: 'text-amber-300',
-    },
-    fullSentence: 'If the team finishes the slide deck before 5 PM today, Teacher Ana will review their speaking notes.',
-    ifClause: 'If the team finishes the slide deck before 5 PM today',
-    resultClause: 'Teacher Ana will review their speaking notes',
-    ifVerb: 'finishes (Present Simple 3rd person singular)',
-    resultVerb: 'will review (Future outcome with will)',
-    formula: 'If + Present Simple, will + Base Verb',
-    whyThisStructure: 'A project milestone happening this afternoon. Finishing slides by 5 PM guarantees the teacher will review their work.',
-    exerciseTip: 'Subject-Verb Agreement Alert: Notice "finishes" with an -es because "the team" is treated as a collective singular unit here.',
-  },
-  {
-    id: 'scen-library',
+    id: 'scen-water',
     type: 'zero',
-    title: 'University Library Lending Policy',
-    categoryBadge: 'Zero Conditional: Campus Rule',
-    imageUrl: '/src/assets/images/scenario_library_rules_1791767938572.jpg',
+    title: 'Scientific Law: Water & Boiling Point',
+    categoryBadge: 'Zero Conditional: Scientific Fact',
+    imageUrl: '/images/water_boiling.jpg',
     themeColor: {
       badgeBg: 'bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600',
       border: 'border-cyan-500/60',
@@ -141,21 +60,102 @@ const RICH_SCENARIOS: GrammarScenarioItem[] = [
       accentGradient: 'from-blue-600 via-indigo-600 to-cyan-600',
       highlightText: 'text-cyan-300',
     },
-    fullSentence: 'If you scan your university badge at the turnstile, the digital gate opens automatically.',
-    ifClause: 'If you scan your university badge at the turnstile',
-    resultClause: 'the digital gate opens automatically',
-    ifVerb: 'scan (Present Simple)',
-    resultVerb: 'opens (Present Simple with -s)',
+    fullSentence: 'If you heat water to 100°C, it boils.',
+    ifClause: 'If you heat water to 100°C',
+    resultClause: 'it boils',
+    ifVerb: 'heat (Present Simple)',
+    resultVerb: 'boils (Present Simple 3rd person -s)',
     formula: 'If / When + Present Simple, Present Simple',
-    whyThisStructure: 'A permanent mechanical rule & security law. It happens 100% of the time, not just tomorrow or in the future.',
-    exerciseTip: 'Zero Conditional Reality: Both clauses use Present Simple. Never use "will open" for permanent automatic classroom rules!',
+    whyThisStructure: 'A universal scientific physical law. It happens 100% of the time, so both clauses stay in Present Simple.',
+    exerciseTip: 'Zero Conditional Rule: Both clauses use Present Simple. Never use "will" for universal scientific facts!',
+  },
+  {
+    id: 'scen-rain',
+    type: 'first',
+    title: 'Weather Plan: Rain & Yellow Umbrella',
+    categoryBadge: 'First Conditional: Weather & Action',
+    imageUrl: '/images/rain_umbrella.jpg',
+    themeColor: {
+      badgeBg: 'bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500',
+      border: 'border-teal-500/60',
+      glowRing: 'ring-teal-500/50',
+      cardBg: 'from-[#071C1E] via-[#051314] to-[#03090A]',
+      activeBorder: 'border-teal-400 shadow-xl shadow-teal-950/80',
+      showcaseBg: 'from-[#051B1D] via-[#031113] to-[#020809]',
+      conditionBorder: 'border-teal-500/60 bg-teal-950/70 text-teal-200',
+      resultBorder: 'border-emerald-500/60 bg-emerald-950/70 text-emerald-200',
+      accentGradient: 'from-emerald-500 via-teal-500 to-cyan-500',
+      highlightText: 'text-teal-300',
+    },
+    fullSentence: 'If it rains tomorrow, I will take an umbrella.',
+    ifClause: 'If it rains tomorrow',
+    resultClause: 'I will take an umbrella',
+    ifVerb: 'rains (Present Simple 3rd person -s)',
+    resultVerb: 'will take (Future outcome with will + base verb)',
+    formula: 'If + Present Simple, will + Base Verb',
+    whyThisStructure: 'A realistic future possibility. The condition uses Present Simple with 3rd-person -s ("rains"), and the consequence uses "will take".',
+    exerciseTip: 'Subject-Verb Agreement Alert: Because the subject is "it", add "-s" to "rains". Never say "If it will rain"!',
+  },
+  {
+    id: 'scen-study',
+    type: 'first',
+    title: 'Exam Preparation & High Score',
+    categoryBadge: 'First Conditional: Study Goal',
+    imageUrl: '/images/study_success.jpg',
+    themeColor: {
+      badgeBg: 'bg-gradient-to-r from-fuchsia-600 via-pink-600 to-rose-600',
+      border: 'border-fuchsia-500/60',
+      glowRing: 'ring-fuchsia-500/50',
+      cardBg: 'from-[#140C24] via-[#0E081A] to-[#07040E]',
+      activeBorder: 'border-fuchsia-400 shadow-xl shadow-fuchsia-950/80',
+      showcaseBg: 'from-[#120722] via-[#0B0416] to-[#05020B]',
+      conditionBorder: 'border-fuchsia-500/60 bg-fuchsia-950/70 text-fuchsia-200',
+      resultBorder: 'border-pink-500/60 bg-pink-950/70 text-pink-200',
+      accentGradient: 'from-fuchsia-500 via-purple-600 to-pink-600',
+      highlightText: 'text-fuchsia-300',
+    },
+    fullSentence: 'If you study tonight, you will pass tomorrow’s test.',
+    ifClause: 'If you study tonight',
+    resultClause: 'you will pass tomorrow’s test',
+    ifVerb: 'study (Present Simple condition)',
+    resultVerb: 'will pass (Future outcome with will)',
+    formula: 'If + Present Simple, will + Base Verb',
+    whyThisStructure: 'Studying tonight is a realistic present condition that directly produces the positive future result on tomorrow’s test.',
+    exerciseTip: 'Golden Rule: Never say "If you will study". Always put Present Simple directly after "If", and reserve "will pass" for the consequence clause!',
+  },
+  {
+    id: 'scen-teacher',
+    type: 'zero',
+    title: 'Teacher Ana: Daily Speaking Routine',
+    categoryBadge: 'Zero Conditional: Habit & Fluency',
+    imageUrl: '/images/teacher_ana.jpg',
+    themeColor: {
+      badgeBg: 'bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600',
+      border: 'border-violet-500/60',
+      glowRing: 'ring-violet-500/50',
+      cardBg: 'from-[#180E2B] via-[#10081F] to-[#080410]',
+      activeBorder: 'border-violet-400 shadow-xl shadow-violet-950/80',
+      showcaseBg: 'from-[#150B28] via-[#0E061C] to-[#07020E]',
+      conditionBorder: 'border-violet-500/60 bg-violet-950/70 text-violet-200',
+      resultBorder: 'border-purple-500/60 bg-purple-950/70 text-purple-200',
+      accentGradient: 'from-violet-600 via-purple-600 to-indigo-600',
+      highlightText: 'text-violet-300',
+    },
+    fullSentence: 'If students practice speaking in class, their fluency improves quickly.',
+    ifClause: 'If students practice speaking in class',
+    resultClause: 'their fluency improves quickly',
+    ifVerb: 'practice (Present Simple plural)',
+    resultVerb: 'improves (Present Simple with -s)',
+    formula: 'If + Present Simple, Present Simple',
+    whyThisStructure: 'A general educational principle and habit: regular classroom practice automatically builds fluency.',
+    exerciseTip: 'Both clauses represent a regular habit and reliable truth, which is the heart of Zero Conditional!',
   },
 ];
 
 export const InteractiveImageHub: React.FC<InteractiveImageHubProps> = ({
   onSetTeacherMessage,
 }) => {
-  const [selectedScenarioId, setSelectedScenarioId] = useState<string>('scen-exam');
+  const [selectedScenarioId, setSelectedScenarioId] = useState<string>('scen-water');
   const [activeFilter, setActiveFilter] = useState<'all' | 'first' | 'zero'>('all');
 
   const selectedScenario =
@@ -315,29 +315,34 @@ export const InteractiveImageHub: React.FC<InteractiveImageHubProps> = ({
                     : `${scen.themeColor.border} bg-[#070A12] hover:shadow-2xl`
                 }`}
               >
-                {/* Interactive Structured Text Header Banner (No image) */}
-                <div className={`p-4 bg-gradient-to-b ${scen.themeColor.cardBg} border-b border-slate-800/80 flex flex-col justify-between gap-3`}>
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={`px-3 py-1 rounded-xl text-[10px] font-black uppercase tracking-wider text-white shadow-lg border border-white/20 ${scen.themeColor.badgeBg}`}
-                    >
-                      {scen.type === 'first' ? '1st Conditional' : 'Zero Conditional'}
-                    </span>
-                    {isSelected && (
-                      <span className="bg-emerald-400 text-slate-950 px-2 py-0.5 rounded-lg text-[10px] font-black shadow-md flex items-center gap-1">
-                        <span>✓</span>
-                        <span>ACTIVE</span>
+                {/* Visual Image Thumbnail */}
+                <div className="relative aspect-video w-full overflow-hidden bg-slate-900 border-b border-slate-800">
+                  <img
+                    src={scen.imageUrl}
+                    alt={scen.title}
+                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-between p-3">
+                    <div className="flex items-center justify-between">
+                      <span
+                        className={`px-2.5 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wider text-white shadow-lg border border-white/20 ${scen.themeColor.badgeBg}`}
+                      >
+                        {scen.type === 'first' ? '1st Conditional' : 'Zero Conditional'}
                       </span>
-                    )}
-                  </div>
-
-                  <div className="p-3 rounded-2xl bg-black/60 border border-slate-800">
-                    <span className="text-[10px] uppercase font-mono text-slate-400 block font-bold mb-1">
-                      Formula Pattern:
-                    </span>
-                    <span className="text-xs font-mono font-bold text-amber-300">
-                      {scen.formula}
-                    </span>
+                      {isSelected && (
+                        <span className="bg-emerald-400 text-slate-950 px-2 py-0.5 rounded-lg text-[10px] font-black shadow-md flex items-center gap-1">
+                          <span>✓</span>
+                          <span>ACTIVE</span>
+                        </span>
+                      )}
+                    </div>
+                    <div className="bg-black/75 backdrop-blur-xs px-2 py-1 rounded-md border border-white/10 self-start">
+                      <span className="text-[10px] font-mono font-bold text-amber-300">
+                        {scen.formula}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
@@ -378,41 +383,51 @@ export const InteractiveImageHub: React.FC<InteractiveImageHubProps> = ({
         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-cyan-500/20 blur-3xl pointer-events-none" />
 
         <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
-          {/* Representative Interactive Text Card Spotlight (No image) */}
-          <div className="lg:col-span-5">
-            <div className={`p-6 rounded-3xl border-2 ${selectedScenario.themeColor.border} bg-[#060A14] shadow-2xl space-y-4`}>
-              <div className="flex items-center justify-between">
-                <span className="font-black text-xs text-amber-300 bg-amber-950/60 border border-amber-500/40 px-3 py-1 rounded-xl">
-                  {selectedScenario.categoryBadge}
-                </span>
-                <span className={`px-2.5 py-0.5 rounded-lg text-[10px] font-black uppercase text-white ${selectedScenario.themeColor.badgeBg}`}>
-                  {selectedScenario.type === 'first' ? 'Predictive' : 'Routine Rule'}
-                </span>
+          {/* Spotlight Graphic Card with Full Illustrated Scene */}
+          <div className="lg:col-span-5 space-y-4">
+            <div className={`rounded-3xl border-2 ${selectedScenario.themeColor.border} bg-[#060A14] overflow-hidden shadow-2xl group`}>
+              <div className="relative aspect-[4/3] w-full overflow-hidden bg-black">
+                <img
+                  src={selectedScenario.imageUrl}
+                  alt={selectedScenario.title}
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                  <span className="font-black text-[11px] text-amber-300 bg-black/85 backdrop-blur-md border border-amber-500/40 px-3 py-1 rounded-xl shadow-lg">
+                    {selectedScenario.categoryBadge}
+                  </span>
+                  <span className={`px-2.5 py-1 rounded-xl text-[10px] font-black uppercase text-white shadow-lg ${selectedScenario.themeColor.badgeBg}`}>
+                    {selectedScenario.type === 'first' ? 'Predictive' : 'Scientific Fact'}
+                  </span>
+                </div>
               </div>
 
-              <div className="p-4 rounded-2xl bg-black/80 border border-slate-800">
-                <span className="text-[11px] font-mono text-slate-400 block mb-1 uppercase tracking-wider">
-                  Target Rule Blueprint
-                </span>
-                <p className="text-sm font-mono font-black text-amber-300">
-                  {selectedScenario.formula}
-                </p>
-                <p className="text-xs text-slate-300 mt-2 font-medium leading-relaxed">
-                  {selectedScenario.whyThisStructure}
-                </p>
-              </div>
+              <div className="p-4 bg-gradient-to-b from-[#0A0F1D] to-[#060A14] border-t border-slate-800 space-y-3">
+                <div className="p-3.5 rounded-2xl bg-black/80 border border-slate-800">
+                  <span className="text-[10px] font-mono text-slate-400 block mb-0.5 uppercase tracking-wider font-bold">
+                    Target Rule Blueprint:
+                  </span>
+                  <p className="text-xs sm:text-sm font-mono font-black text-amber-300">
+                    {selectedScenario.formula}
+                  </p>
+                  <p className="text-xs text-slate-300 mt-1.5 font-medium leading-relaxed">
+                    {selectedScenario.whyThisStructure}
+                  </p>
+                </div>
 
-              <div className="flex items-center justify-between pt-2 border-t border-slate-800">
-                <span className="text-xs font-semibold text-slate-400">
-                  Pronunciation & Intonation
-                </span>
-                <button
-                  onClick={() => handleSpeak(selectedScenario.fullSentence)}
-                  className="px-3.5 py-2 rounded-xl text-xs font-black bg-white text-slate-950 hover:bg-slate-200 transition-colors flex items-center gap-1.5 shadow-md cursor-pointer"
-                >
-                  <Volume2 className="w-4 h-4 text-indigo-700" />
-                  <span>Listen Voice</span>
-                </button>
+                <div className="flex items-center justify-between pt-1 border-t border-slate-800">
+                  <span className="text-xs font-semibold text-slate-400">
+                    Pronunciation & Intonation
+                  </span>
+                  <button
+                    onClick={() => handleSpeak(selectedScenario.fullSentence)}
+                    className="px-3.5 py-2 rounded-xl text-xs font-black bg-white text-slate-950 hover:bg-slate-200 transition-colors flex items-center gap-1.5 shadow-md cursor-pointer shrink-0"
+                  >
+                    <Volume2 className="w-4 h-4 text-indigo-700" />
+                    <span>Listen Voice</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

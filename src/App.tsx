@@ -68,8 +68,13 @@ export default function App() {
             href="/"
             className="text-lg font-black tracking-tight text-white whitespace-nowrap shrink-0 flex items-center gap-2.5 font-display"
           >
-            <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-violet-600 via-fuchsia-600 to-pink-500 flex items-center justify-center text-white text-base shadow-lg shadow-violet-500/30">
-              ⚡
+            <span className="w-9 h-9 rounded-xl overflow-hidden border border-violet-400/80 shadow-lg shadow-violet-500/30 shrink-0">
+              <img
+                src="/images/teacher_ana.jpg"
+                alt="Teacher Ana Espitia"
+                className="w-full h-full object-cover object-top"
+                referrerPolicy="no-referrer"
+              />
             </span>
             <span className="bg-gradient-to-r from-violet-400 via-fuchsia-300 to-pink-400 bg-clip-text text-transparent font-extrabold">
               Teacher Ana Espitia

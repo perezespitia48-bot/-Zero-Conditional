@@ -147,21 +147,37 @@ export const InteractiveTutor: React.FC<InteractiveTutorProps> = ({
             <motion.div
               animate={isWaving ? { rotate: [0, -10, 10, -5, 5, 0], scale: [1, 1.08, 1] } : {}}
               transition={{ duration: 0.6 }}
-              className={`relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden border-2 shadow-2xl transition-all flex flex-col items-center justify-center p-3 select-none ${
+              className={`relative w-28 h-28 sm:w-32 sm:h-32 rounded-3xl overflow-hidden border-2 shadow-2xl transition-all flex flex-col items-center justify-center select-none ${
                 activeTutor === 'ana'
                   ? 'border-violet-500/80 ring-4 ring-violet-500/20 bg-gradient-to-br from-violet-900/90 via-purple-950/80 to-slate-950 text-white'
-                  : 'border-emerald-500/80 ring-4 ring-emerald-500/20 bg-gradient-to-br from-emerald-900/90 via-teal-950/80 to-slate-950 text-white'
+                  : 'border-emerald-500/80 ring-4 ring-emerald-500/20 bg-gradient-to-br from-emerald-900/90 via-teal-950/80 to-slate-950 text-white p-3'
               }`}
             >
-              <span className="text-4xl mb-1">
-                {activeTutor === 'ana' ? '👩‍🏫' : '🎒'}
-              </span>
-              <span className="text-[11px] font-black uppercase tracking-wider text-center line-clamp-1">
-                {activeTutor === 'ana' ? 'Teacher Ana' : 'Student Marco'}
-              </span>
-              <span className="text-[9px] font-mono opacity-70">
-                {activeTutor === 'ana' ? 'Instructor' : 'Study Buddy'}
-              </span>
+              {activeTutor === 'ana' ? (
+                <div className="relative w-full h-full">
+                  <img
+                    src="/images/teacher_ana.jpg"
+                    alt="Teacher Ana Espitia"
+                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-2 text-center">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-white">
+                      Teacher Ana
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <>
+                  <span className="text-4xl mb-1">🎒</span>
+                  <span className="text-[11px] font-black uppercase tracking-wider text-center line-clamp-1">
+                    Student Marco
+                  </span>
+                  <span className="text-[9px] font-mono opacity-70">
+                    Study Buddy
+                  </span>
+                </>
+              )}
             </motion.div>
 
             {/* Interactive reaction badge */}
